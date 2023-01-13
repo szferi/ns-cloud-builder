@@ -1,0 +1,8 @@
+# gcloud-sdk include docker already and based on Debian
+ARG BASE_IMAGE=gcr.io/google.com/cloudsdktool/cloud-sdk
+FROM ${BASE_IMAGE}
+
+COPY foundation/cmd/ns/ns /usr/bin/ns
+RUN /usr/bin/ns config disable telemetry
+
+ENTRYPOINT [ "/usr/bin/ns" ]
